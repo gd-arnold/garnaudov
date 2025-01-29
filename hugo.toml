@@ -1,0 +1,52 @@
+baseURL = 'https://garnaudov.com/'
+languageCode = 'en-us'
+title = 'Georgi Arnaudov'
+theme = 'typo'
+
+[taxonomies]
+tag = 'tags'
+
+[params]
+# Meta description
+description = "Georgi Arnaudov's personal website"
+
+# Appearance settings
+theme = 'dark'
+colorPalette = 'gruvebox'
+hideHeader = false
+footerContent = 'Made with love and **_white monster_**'
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'Hi!'
+homeIntroContent = """
+I'm a 21 year-old software engineer, leaning more towards being a generalist.
+My interests include - but are not limited to - low-level systems programming, distributed systems, DevOps, and compilers.
+
+Here, I'll be sharing my journey in the CS field, along with personal thoughts and technical long-form writings.
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Posts'
+homeCollection = 'posts'
+
+# Lists parameters
+paginationSize = 100
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+breadcrumbs = true
+
+# Social icons
+[[params.social]]
+name = "github"
+url = "https://github.com/gd-arnold"
+
+[[params.social]]
+name = "gmail"
+url = "mailto:gdarnold19@gmail.com"
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'algol'
