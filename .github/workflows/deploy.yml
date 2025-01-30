@@ -1,0 +1,38 @@
+name: Deploy
+on:
+  push:
+    branch: [main]
+
+jobs:
+  build-deply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive # for the theme
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.142.0'
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - name: Deploy to S3
+        run: aws s3 sync ./public s3://${{ secrets.AWS_S3_BUCKET }} --delete
+
+      - name: Purge Cloudflare Cache
+        uses: cloudflare/wrangler-action@v3
+        with:
+          command: purge
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          zoneId: ${{ secrets.CLOUDFLARE_ZONE_ID }}
