@@ -32,8 +32,9 @@ jobs:
         run: aws s3 sync ./public s3://${{ secrets.AWS_S3_BUCKET }} --delete
 
       - name: Purge Cloudflare Cache
-        uses: cloudflare/wrangler-action@v3
-        with:
-          command: purge
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          zoneId: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        run: |
+          curl -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
