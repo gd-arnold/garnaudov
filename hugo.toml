@@ -22,12 +22,12 @@ homeIntroContent = """
 I'm a 21 year-old software engineer, leaning towards being a generalist.
 My interests include - but are not limited to - low-level systems programming, distributed systems, DevOps, and compilers.
 
-Here, I'll be sharing my journey in the CS field, along with personal thoughts and technical long-form writings.
+Here, I'll be sharing my work, along with personal thoughts and technical long-form writings.
 """
 
 # Collection to display on home
-homeCollectionTitle = 'Posts'
-homeCollection = 'posts'
+homeCollectionTitle = 'Projects'
+homeCollection = 'projects'
 
 # Lists parameters
 paginationSize = 100
@@ -43,8 +43,8 @@ name = "github"
 url = "https://github.com/gd-arnold"
 
 [[params.social]]
-name = "gmail"
-url = "mailto:gdarnold19@gmail.com"
+name = "proton"
+url = "mailto:garnaudov@proton.me"
 
 # Syntax highlight on code blocks
 [markup]
